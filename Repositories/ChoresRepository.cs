@@ -37,5 +37,11 @@ public class ChoresRepository
     dbChores.Remove(choreToBeRemoved);
     return choreToBeRemoved;
   }
-  
+
+  internal Chore UpdateChore(string choreName)
+  {
+    Chore choreToUpdate = GetChoreByName(choreName);
+    dbChores.
+  }
+
 }

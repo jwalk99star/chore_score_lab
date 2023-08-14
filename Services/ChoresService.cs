@@ -12,32 +12,33 @@ public class ChoresService
     _choresRepository = choresRepository;
   }
 
-    internal Chore CreateChore(Chore choreData)
+  internal Chore CreateChore(Chore choreData)
+  {
+    Chore chore = _choresRepository.CreateChore(choreData);
+    return chore;
+  }
+
+  internal Chore GetChoreByName(string choreName)
+  {
+    Chore chore = _choresRepository.GetChoreByName(choreName);
+
+    if (chore == null)
     {
-      Chore chore = _choresRepository.CreateChore(choreData);
+      throw new Exception($"There is no chore named {choreName}");
+    }
+
+    return chore;
+  }
+
+  internal List<Chore> GetChores()
+  {
+      List<Chore> chores = _choresRepository.GetChores();
+      return chores;
+  }
+
+  internal Chore RemoveChore(string choreName)
+  {
+      Chore chore = _choresRepository.RemoveChore(choreName);
       return chore;
-    }
-
-    internal Chore GetChoreByName(string choreName)
-    {
-      Chore chore = _choresRepository.GetChoreByName(choreName);
-
-      if (chore == null)
-      {
-        throw new Exception($"There is no chore named {choreName}");
-      }
-
-      return chore;
-    }
-
-    internal List<Chore> GetChores()
-    {
-        List<Chore> chores = _choresRepository.GetChores();
-        return chores;
-    }
-
-    internal Chore RemoveChore(string choreName)
-    {
-        throw new NotImplementedException();
-    }
+  }
 }

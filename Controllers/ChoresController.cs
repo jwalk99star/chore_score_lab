@@ -1,5 +1,6 @@
 using chores_api_csharp.Models;
 using chores_api_csharp.Services;
+using Microsoft.AspNetCore.SignalR.Protocol;
 
 namespace chores_api_csharp.Controllers;
 
@@ -76,6 +77,19 @@ public class ChoresController : ControllerBase
     catch (Exception error)
     {
         return BadRequest(error.Message);
+    }
+  }
+
+  [HttpPut("{choreName}")]
+  public ActionResult<string> UpdateChore(string choreName);
+  {
+    try
+    {
+      Chore chore = _choresService.UpdateChore(choreName);
+    }
+    catch (Exception error)
+    {
+        return BadRequest
     }
   }
 
